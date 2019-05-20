@@ -1,0 +1,86 @@
+<!--使用基础模板,必须放在前面-->
+{% extends 'base.html' %}
+
+{% load static %}
+<!--填充第一块，页面标题-->
+{% block title %}
+<title>{{ blog.title }}</title>
+{% endblock %}
+
+{% block nav_blog_active%}
+active
+{% endblock %}
+
+{% block header_extend %}
+<link rel="stylesheet" href="{% static 'blog\css\blog.css'%}">
+{% endblock %}
+
+<!--填充第二块，页面内容-->
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <h3>{{ blog.title }}</h3>
+
+            <ul class="blog-info-descrption">
+            <li>作者：{{ blog.author }}</li>
+            <li>博客分类：<a href="{% url 'blogs_with_type' blog.blog_type.pk %}">{{ blog.blog_type }}</a></li>
+            <li>发表时间：{{ blog.created_time|date:"Y-m-d G:i:s" }}</li>
+            <li>阅读次数：{{ blog.get_read_num }}</li>
+            </ul>
+            <div class="blog-content">{{ blog.context|safe }}</div>
+
+            <div class="blog-more">
+                <p>
+                    上一篇：
+                    {% if previous_blog %}
+                    <a href="{% url 'blog_detail' previous_blog.pk %}">{{ previous_blog.title }}</a>
+                    {% else %}
+                        没有了
+                    {% endif %}
+                </p>
+                <p>
+                    上一篇：
+                    {% if next_blog %}
+                    <a href="{% url 'blog_detail' next_blog.pk %}">{{ next_blog.title }}</a>
+                    {% else %}
+                        没有了
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>{{ blog.title }}</title>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div>-->
+        <!--<a href="{% url 'blog_list' %}">-->
+            <!--<h3>个人博客网站</h3>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<h3>{{ blog.title }}</h3>-->
+    <!--<p>作者：{{ blog.author }}</p>-->
+    <!--<p>发表时间：{{ blog.created_time|date:"Y-m-d G:i:s" }}</p>-->
+    <!--<p>博客分类：-->
+        <!--<a href="{% url 'blogs_with_type' blog.blog_type.pk %}">-->
+            <!--{{ blog.blog_type }}-->
+        <!--</a>-->
+
+    <!--</p>-->
+    <!--<p>{{ blog.context }}</p>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+

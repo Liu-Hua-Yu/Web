@@ -1,0 +1,9 @@
+{# 去掉主题边距 #}
+* {
+    margin:0;
+    padding:0;
+}
+
+ul{
+    list-style-type:none;
+}

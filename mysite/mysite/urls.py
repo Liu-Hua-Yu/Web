@@ -15,10 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import home
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # 默认url
-    # path('', include('polls.urls')),
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
+    path('blog/', include('blog.urls')),
+    # 上传的文件URL
+    path('ckeditor', include('ckeditor_uploader.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)

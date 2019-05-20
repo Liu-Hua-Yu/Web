@@ -38,6 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 富文本编辑器
+    'ckeditor',
+    # 图片上传
+    'ckeditor_uploader',
+    # 博客应用
+    'blog.apps.BlogConfig',
+    'read_count',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +62,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+
         # 项目模板的位置
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
@@ -120,3 +128,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+# 添加主目录的static文件夹到系统中
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# media目录,用于存放上传的文件
+MEDIA_URL = '/media/'
+MEIDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 配置ckedior
+CKEDITOR_UPLOAD_PATH = 'upload/img'

@@ -1,0 +1,39 @@
+{% extends 'blog/blog_list.html' %}
+
+{% block title %}
+{{ blog_type.type_name }}
+{% endblock %}
+
+{% block blog_list_title %}
+分类：{{ blog_type.type_name }}
+{% endblock %}
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>{{ blog_type.type_name }}</title>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div>-->
+    <!--<a href="{% url 'blog_list' %}" ><h3>个人博客网站</h3></a>-->
+    <!--</div>-->
+    <!--<hr>-->
+
+    <!--{% for blog in blogs %}-->
+    <!--&lt;!&ndash;跳转到详情页面的链接&ndash;&gt;-->
+        <!--<a href="{% url 'blog_detail' blog.pk %}">-->
+            <!--<h3> {{ blog.title }}</h3></a>-->
+    <!--&lt;!&ndash;使用过滤器显示文章的前30&ndash;&gt;-->
+        <!--<p> {{ blog.context|truncatechars_html:30 }}</p>-->
+    <!--{% empty %}-->
+<!--&lt;!&ndash;没有任何内容的提示&ndash;&gt;-->
+    <!--<p>&#45;&#45; 暂无任何博客 &#45;&#45;</p>-->
+    <!--{% endfor %}-->
+
+<!--&lt;!&ndash;添加博客篇数 使用过滤器&ndash;&gt;-->
+<!--<p>一共有{{ blogs|length }}篇博客</p>-->
+
+<!--</body>-->
+<!--</html>-->
